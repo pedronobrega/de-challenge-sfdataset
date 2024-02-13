@@ -81,11 +81,11 @@ default:
   PINOT_USER: user
   # PostgresSQL
   POSTGRES_CONNECT_TIMEOUT: 10
-  POSTGRES_DBNAME: dechallenge
+  POSTGRES_DBNAME: datawarehouse
   POSTGRES_SCHEMA: public # Optional
   POSTGRES_USER: dechallenge
   POSTGRES_PASSWORD: dechallenge
-  POSTGRES_HOST: postgres
+  POSTGRES_HOST: datawarehouse
   POSTGRES_PORT: 5432
   # Qdrant
   QDRANT_COLLECTION: collection

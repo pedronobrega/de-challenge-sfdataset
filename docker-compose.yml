@@ -1,0 +1,65 @@
+version: '3'
+services:
+    datawarehouse:
+        image: postgres:16.2
+        environment:
+            - POSTGRES_USER=dechallenge
+            - POSTGRES_PASSWORD=dechallenge
+            - POSTGRES_DB=datawarehouse
+        ports:
+            - 5432:5432
+        volumes:
+            - ./datawarehouse.db:/var/lib/postgresql/data
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+    
+    metabasedb:
+        image: postgres:16.2
+        environment:
+            - POSTGRES_USER=dechallenge
+            - POSTGRES_PASSWORD=dechallenge
+            - POSTGRES_DB=metabasedb
+        ports:
+            - 5433:5432
+        volumes:
+            - ./metabase.db:/var/lib/postgresql/data
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+
+    magic:
+        image: mageai/mageai:latest
+        command: mage start ${PROJECT_NAME}
+        env_file:
+          - .env
+        build:
+          context: .
+        environment:
+          USER_CODE_PATH: /home/src/${PROJECT_NAME}
+          ENV: dev
+        ports:
+          - 6789:6789
+        volumes:
+          - .:/home/src/
+        restart: on-failure:5
+        depends_on:
+          - datawarehouse
+    
+    metabase:
+        depends_on:
+            - metabasedb
+            - datawarehouse
+        image: metabase/metabase
+        ports:
+            - "3000:3000"
+        restart: always
+        environment:
+            MB_DB_USER: dechallenge
+            MB_DB_PASS: dechallenge
+            MB_DB_TYPE: postgres
+            MB_DB_DBNAME: metabasedb
+            MB_DB_PORT: 5432
+            MB_DB_HOST: metabasedb

@@ -161,4 +161,4 @@ cython_debug/
 
 *.pdf
 mage_data
-postgres-data
+datawarehouse.db
