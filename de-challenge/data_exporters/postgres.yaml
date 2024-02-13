@@ -1,0 +1,8 @@
+config:
+  database: dechallenge
+  host: postgres
+  password: dechallenge
+  port: 5432
+  schema: null
+  username: dechallenge
+destination: postgresql

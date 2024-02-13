@@ -1,0 +1,9 @@
+config:
+  columns: null
+  headers: null
+  method: GET
+  payload: null
+  query: null
+  response_parser: json
+  url: https://data.sfgov.org/resource/wr8u-xric.json
+source: api
