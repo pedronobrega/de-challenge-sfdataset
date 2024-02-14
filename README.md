@@ -29,6 +29,7 @@ docker compose up
 WIth all containers running, access them using your best browser:
 
 - [Mage-AI UI](http://localhost:6789/overview)
+    - To trigger the pipeline run, navigate to Pipelines -> bronze_etl_sf_fi -> Triggers -> daily_bronze_etl_sf_fi -> Enable Trigger. After that the pipeline will start.
 
 - [Metabase UI](http://localhost:3000/)
     - Create a new user and connect to the postgre instance using the following credentials
