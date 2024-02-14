@@ -29,6 +29,11 @@ docker compose up
 WIth all containers running, access them using your best browser:
 
 - [Mage-AI UI](http://localhost:6789/overview)
+
 - [Metabase UI](http://localhost:3000/)
-    - Login: data@engineer.com
-    - Password: dechallenge1
+    - Create a new user and connect to the postgre instance using the following credentials
+        - POSTGRES DBNAME: datawarehouse
+        - POSTGRES USER: dechallenge
+        - POSTGRES PASSWORD: dechallenge
+        - POSTGRES HOST: datawarehouse
+        - POSTGRES PORT: 5432
